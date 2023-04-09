@@ -1,0 +1,71 @@
+.footer-container{
+    background-color: rgb(24,25,27);
+    color: white;
+    margin-top: 10vmax;
+    padding: 4vmax;
+    margin-bottom: 0px;
+}
+.footer-up{
+    padding-bottom: 8.2%;
+}
+.footer-up > div{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.footer-up > div > input {
+    padding: 1vmax 4vmax;
+    padding-right: 1vmax;
+    border:none;
+    width: 10%;
+    font: 400 1vmax cursive;
+    outline: none;
+    border-bottom: 1px solid rgb(72,73,78);
+    background: transparent;
+    color: white;
+}
+.footer-up > div > svg{
+    position: absolute;
+    transform: translateX(1vmax);
+    font-size: 1.2vmax;
+}
+.footer-down{
+    display: flex;
+    justify-content: space-around;
+}
+.footer-logo{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+.footer-logo > img{
+    width: 10vmax;
+    margin: 1vmax;
+    cursor: pointer;
+}
+.footer-mid-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.footer-tc{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.footer-right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.footer-mid-right > a, .footer-tc > a{
+    text-decoration: none;
+    font-size: 1.3vmax;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    transition: all 0.5s;
+    margin: 0.5vmax;
+}
+.footer-socialmedia > span > svg{
+    width: 30px;
+}
