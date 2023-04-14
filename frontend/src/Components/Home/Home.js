@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Home.css";
 import {CgMouse} from "react-icons/cg"; 
+import ProductCard from './ProductCard';
 
 const Home = () => {
 
@@ -16,7 +17,7 @@ const Home = () => {
                 </a>
       </div>
       <div id='container'>
-        Products
+        <ProductCard/>
       </div>
     </div>
   )
