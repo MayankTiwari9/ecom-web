@@ -1,0 +1,26 @@
+.productDetails-container{
+    display: flex;
+    width: auto;
+    margin: auto;
+    padding: 10%;
+    height: min-content;
+}
+.productDetails-image{
+    width: 300px;
+    height: min-content;
+    padding: 0px 50px;
+}
+.productDetails-image > img{
+    width: 200px;
+    height: 200px;
+} 
+.productDetails-detail{
+    width: 500px;
+}
+.productDetails-detail > div{
+    display: flex;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+    border-bottom: 1px solid rgb(175, 170, 170);
+    padding-bottom: 3%;
+}

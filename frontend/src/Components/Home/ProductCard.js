@@ -1,34 +1,35 @@
 import React from 'react'
 import { useSelector } from "react-redux";
 import "./Home.css";
+import {Link} from "react-router-dom";
 
 const ProductCard = () => {
   const products = useSelector((state) => state.allProducts.products);
-  console.log(products);
-
   const renderList = products.map((product) => {
-    const { id, name, price, image, category, description } = product;
+    const { id, title, price, image, category, rating } = product;
 
     return (
-      <div>
+      <div >
+        <Link to={`/product/${id}`} >
         <div className='productCard-container'>
           <div className='productCard-image'>
             <img src={image} alt={id} />
           </div>
           <div className='productCard-details'>
-            <h2>{name}</h2>
-            <h4>{price}</h4>
+            <h2>{title}</h2>
+            <h4>$ {price}</h4>
             <p>{category}</p>
-            <p>{description}</p>
+            <p>{rating.rate}</p>
           </div>
         </div>
+         </Link>
       </div>
     )
   })
 
   return (
     <>
-      <h1>ProductCard</h1>
+      <h1 className='productCart-heading'>Featured Products</h1>
       <div className='productcart-main'>
         {renderList}
       </div>

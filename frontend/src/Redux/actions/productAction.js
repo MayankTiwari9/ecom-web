@@ -1,8 +1,20 @@
-import {ALL_PRODUCT_SUCCESS} from "../constants/productConstants";
+import { ActionTypes } from "../constants/productConstants";
 
-export const getProduct = (products) => {
-    return{
-        type: ALL_PRODUCT_SUCCESS,
-        payload: products,
-    }
-}
+export const setProducts = (products) => {
+  return {
+    type: ActionTypes.SET_PRODUCTS,
+    payload: products, 
+  };
+};
+
+export const selectedProduct = (product) => {
+  return {
+    type: ActionTypes.SELECTED_PRODUCT,
+    payload: product,
+  };
+};
+export const removeSelectedProduct = () => {
+  return {
+    type: ActionTypes.REMOVE_SELECTED_PRODUCT,
+  };
+};

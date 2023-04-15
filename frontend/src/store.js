@@ -1,9 +1,10 @@
 import {createStore, combineReducers} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
-import { productReducer } from "./Redux/reducers/productReducers";
+import {productsReducer, selectedProductsReducer} from "./Redux/reducers/productReducers"
 
 const reducers = combineReducers({
-    allProducts: productReducer
+    allProducts: productsReducer,
+    product: selectedProductsReducer
 });
 
 const store = createStore(
