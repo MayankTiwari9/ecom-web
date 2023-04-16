@@ -6,6 +6,10 @@ import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home';
 import ProductDetails from './Components/Product/ProductDetails';
 import Products from './Components/Products/Products';
+import MensClothing from './Components/Products/MensClothing';
+import WomensClothing from './Components/Products/WomensClothing';
+import Jewelery from './Components/Products/Jewelery';
+import Electronics from './Components/Products/Electronics';
 
 
 function App() {
@@ -17,6 +21,10 @@ function App() {
       <Route exact path='/' element={<Home/>}/>
       <Route exact path='/products' element={<Products/>}/>
       <Route exact path='/product/:productId' element={<ProductDetails/>}/>
+      <Route path='/products/mens' element={<MensClothing/>}/>
+      <Route path='/products/womens' element={<WomensClothing/>}/>
+      <Route path='/products/jewelery' element={<Jewelery/>}/>
+      <Route path='/products/electronics' element={<Electronics/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

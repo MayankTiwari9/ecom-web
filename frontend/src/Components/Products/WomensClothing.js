@@ -1,19 +1,16 @@
+import axios from 'axios';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { setProducts } from "../../Redux/actions/productAction";
-import { Link } from "react-router-dom";
-import "./Products.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { setProducts } from '../../Redux/actions/productAction';
 
-
-const Products = () => {
-
+const WomensClothing = () => {
     const dispatch = useDispatch();
     const allProducts = useSelector((state) => state.allProducts.products);
 
     const getData = allProducts.map((products) => {
         const { id, title, price, description, category, image } = products;
-        // if(category === "men's clothing"){
+        if(category === "women's clothing"){
         return (
 
             <div className='products-main'>
@@ -34,7 +31,7 @@ const Products = () => {
                 </Link>
             </div>
         )
-        // }
+        }
     })
 
     useEffect(() => {
@@ -64,4 +61,4 @@ const Products = () => {
     )
 }
 
-export default Products;
+export default WomensClothing;

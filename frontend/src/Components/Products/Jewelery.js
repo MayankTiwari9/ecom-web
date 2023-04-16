@@ -5,15 +5,14 @@ import { setProducts } from "../../Redux/actions/productAction";
 import { Link } from "react-router-dom";
 import "./Products.css";
 
-
-const Products = () => {
-
+const Jewelery = () => {
+  
     const dispatch = useDispatch();
     const allProducts = useSelector((state) => state.allProducts.products);
 
     const getData = allProducts.map((products) => {
         const { id, title, price, description, category, image } = products;
-        // if(category === "men's clothing"){
+        if(category === "jewelery"){
         return (
 
             <div className='products-main'>
@@ -34,7 +33,7 @@ const Products = () => {
                 </Link>
             </div>
         )
-        // }
+        }
     })
 
     useEffect(() => {
@@ -55,7 +54,7 @@ const Products = () => {
                     <Link to={"/products"}>All Products</Link>
                     <Link to={"/products/mens"}>men's clothing</Link>
                     <Link to={"/products/womens"}>women's clothing</Link>
-                    <Link to={"/products/jewelery"}>jewelery</Link>
+                    <Link to={"/products/jewelry"}>jewelery</Link>
                     <Link to={"/products/electronics"}>electronics</Link>
                 </nav>
             </div>
@@ -64,4 +63,4 @@ const Products = () => {
     )
 }
 
-export default Products;
+export default Jewelery
