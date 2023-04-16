@@ -1,0 +1,81 @@
+.login-container{
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 231, 231);
+    position: fixed;
+    top: 0%;
+    left: 0;
+}
+.login-main{
+    background-color: white;
+    width: 25vw;
+    height: 70vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: space-evenly;
+    height: 100%;
+    transition: all 0.5s;
+}
+.login-heading{
+    border-bottom: 3px solid tomato;
+    text-align: center;
+    height: 4vmax;
+    display: flex;
+    justify-content: center;
+}
+.login-heading > h4{
+    margin: auto;
+    font-weight: 300;
+}
+.login-div{
+    display: flex;
+    width: 80%;
+    align-items: center;
+    padding-left: 2vmax;
+}
+.login-div > svg{
+    position: absolute;
+    transform: translateX(1vmax);
+    font-size: 1.6vmax;
+    color: rgba(0, 0, 0, 0.623);
+}
+.login-form > div > input{
+    padding: 1vmax 4vmax;
+    padding-right: 1vmax;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.267);
+    border-radius: 4px;
+    font: 300 0.9vmax cursive;
+    outline: none;
+}
+.login-div > p{
+    font: 300 0.9vmax cursive;
+}
+.loginBtn{
+    border: none;
+    background-color: tomato;
+    color: white;
+    font: 300 0.9vmax "Roboto";
+    width: 80%;
+    padding: 1vmax 4vmax;
+    padding-right: 1vmax;
+    margin-left: 2vw;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+}
+.loginBtn:hover{
+    background-color: rgb(179, 66, 46);
+}

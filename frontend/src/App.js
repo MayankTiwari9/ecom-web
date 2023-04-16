@@ -10,6 +10,7 @@ import MensClothing from './Components/Products/MensClothing';
 import WomensClothing from './Components/Products/WomensClothing';
 import Jewelery from './Components/Products/Jewelery';
 import Electronics from './Components/Products/Electronics';
+import Login from './Components/User/Login';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Route path='/products/womens' element={<WomensClothing/>}/>
       <Route path='/products/jewelery' element={<Jewelery/>}/>
       <Route path='/products/electronics' element={<Electronics/>}/>
+      <Route exact path='/login' element={<Login/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
