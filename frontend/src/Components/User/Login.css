@@ -68,14 +68,18 @@
     font: 300 0.9vmax "Roboto";
     width: 80%;
     padding: 1vmax 4vmax;
-    padding-right: 1vmax;
     margin-left: 2vw;
     cursor: pointer;
     transition: all 0.5s;
     border-radius: 4px;
     outline: none;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
+    justify-content: center;
 }
 .loginBtn:hover{
-    background-color: rgb(179, 66, 46);
+    background-color: rgb(185, 34, 7);
+}
+.login-div > a{
+    font: 300 0.9vmax cursive;
+    color: black;
 }

@@ -10,7 +10,7 @@ const Home = () => {
   const dispatch = useDispatch();
   useEffect(() => {
   const fetchProducts = async()=>{
-    const response = await axios.get("https://fakestoreapi.com/products").catch((err) => {
+    const response = await axios.get("https://fakestoreapi.com/products?limit=5").catch((err) => {
       console.log(err);
     })
     dispatch(setProducts(response.data));
@@ -30,7 +30,7 @@ const Home = () => {
                 </a>
       </div>
       <div id='container'>
-        <ProductCard/>
+        <ProductCard/>  
       </div>
     </div>
   )
