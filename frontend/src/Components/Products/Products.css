@@ -1,0 +1,17 @@
+.products-navbar{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(37, 36, 36);
+    color: #ffffff;
+    height: 3vmax;
+    width: 100%;
+    justify-content: center;
+}
+.products-navbar > p{
+    font-size: 18px;
+    margin: auto;
+}
+.products-image > img{
+    width: 380px;
+    height: 380px;
+}

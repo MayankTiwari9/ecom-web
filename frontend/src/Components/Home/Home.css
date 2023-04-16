@@ -33,6 +33,7 @@
     background-color: tomato;
     color: #ffffff;
     border: none;
+    cursor: pointer;
 }
 
 .scroll:hover {

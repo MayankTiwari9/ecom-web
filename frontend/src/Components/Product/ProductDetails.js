@@ -4,6 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeSelectedProduct, selectedProduct } from "../../Redux/actions/productAction"
+import {useAlert} from "react-alert";
 
 const ProductDetails = () => {
 
@@ -11,8 +12,7 @@ const ProductDetails = () => {
   const { id, title, price, description, category, image } = product;
   const { productId } = useParams();
   const dispatch = useDispatch();
-  // console.log(productId);
-  // console.log(product);
+  const alert = useAlert();
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -20,6 +20,7 @@ const ProductDetails = () => {
         console.log(err);
       })
       dispatch(selectedProduct(response.data));
+      console.log(response.data);
     }
 
 
@@ -28,6 +29,11 @@ const ProductDetails = () => {
       dispatch(removeSelectedProduct());
     }
   }, [dispatch, productId])
+
+  const addToCartHandler = () => {
+    alert.success("Product Successfully added to cart");
+  }
+
   return (
     <div className='productDetails-main'>
       <div className='productDetails-container'>
@@ -52,6 +58,9 @@ const ProductDetails = () => {
           <div>
             <h4>Description:- </h4> 
             <p>{description}</p>
+          </div>
+          <div>
+            <button className='productDetails-btn' onClick={addToCartHandler}>Add To Cart</button>
           </div>
         </div>
       </div>
