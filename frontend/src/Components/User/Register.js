@@ -7,6 +7,8 @@ import { BsPerson } from "react-icons/bs";
 
 const Register = () => {
 
+
+
     return (
         <div className='login-container'>
             <div className='login-main'>
@@ -16,7 +18,7 @@ const Register = () => {
                     </div>
                     <div className='login-div'>
                         <BsPerson />
-                        <input type='text' placeholder='UserName' />
+                        <input type='text' placeholder='UserName'/>
                     </div>
                     <div className='login-div'>
                         <BsEnvelope />
