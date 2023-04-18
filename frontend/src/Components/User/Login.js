@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import "./Login.css";
 import { BsEnvelope } from "react-icons/bs";
 import { BiLockOpenAlt } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useAlert} from "react-alert";
 
 const Login = () => {
+
+    const navigate = useNavigate();
 
     const alert = useAlert();
 
@@ -17,7 +19,7 @@ const Login = () => {
     }
 
     const passwordHandler=(e)=>{
-        setUserPassword(e.target.value);
+        setUserPassword(e.target.value); 
     }
 
     const submitHandler=(e)=>{
@@ -32,6 +34,13 @@ const Login = () => {
         }else {
             alert.success("Login Successfull");
         }
+
+        setUserEmail("");
+        setUserPassword("");
+
+        setTimeout(() =>{
+                navigate("/");
+            }, 2000)
     }
     
 
@@ -44,11 +53,11 @@ const Login = () => {
                     </div>
                     <div className='login-div'>
                         <BsEnvelope />
-                        <input type='text' placeholder='Email' onChange={emailHandler}/>
+                        <input type='text' placeholder='Email' value={userEmail} onChange={emailHandler}/>
                     </div>
                     <div className='login-div'>
                         <BiLockOpenAlt />
-                        <input type='password' placeholder='Password' onChange={passwordHandler}/>
+                        <input type='password' placeholder='Password' value={userPassword} onChange={passwordHandler}/>
                     </div>
                     <div className='login-div'>
                         <p>Forgot Password ?</p>
