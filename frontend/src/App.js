@@ -13,6 +13,7 @@ import Electronics from './Components/Products/Electronics';
 import Login from './Components/User/Login';
 import Register from './Components/User/Register';
 import Cart from './Components/Cart/Cart';
+import UserOptions from "./Components/UserOptions/UserOptions";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   return (
     <BrowserRouter>
     <Header />
+    <UserOptions/>
     <Routes>
       <Route exact path='/' element={<Home/>}/>
       <Route exact path='/products' element={<Products/>}/>

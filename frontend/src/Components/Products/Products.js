@@ -12,8 +12,7 @@ const Products = () => {
     const allProducts = useSelector((state) => state.allProducts.products);
 
     const getData = allProducts.map((products) => {
-        const { id, title, price, description, category, image } = products;
-        // if(category === "men's clothing"){
+        const { id, title, price, description, image } = products;
         return (
 
             <div className='products-main'>
@@ -34,7 +33,6 @@ const Products = () => {
                 </Link>
             </div>
         )
-        // }
     })
 
     useEffect(() => {
