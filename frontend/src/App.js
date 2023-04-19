@@ -12,8 +12,8 @@ import Jewelery from './Components/Products/Jewelery';
 import Electronics from './Components/Products/Electronics';
 import Login from './Components/User/Login';
 import Register from './Components/User/Register';
-import Cart from './Components/Cart/Cart';
 import UserOptions from "./Components/UserOptions/UserOptions";
+import Dashboard from './Components/UserOptions/Dashboard/Dashboard';
 
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
       <Route path='/products/electronics' element={<Electronics/>}/>
       <Route exact path='/login' element={<Login/>}/>
       <Route exact path='/register' element={<Register/>}/>
-      <Route exact path='/cart' element={<Cart/>}/>
+      <Route exact path='/admin/dashboard' element={<Dashboard/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

@@ -32,6 +32,7 @@ const Electronics = () => {
             </div>
         )
         }
+        return null;
     })
 
     useEffect(() => {

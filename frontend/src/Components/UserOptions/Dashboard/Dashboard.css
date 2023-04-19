@@ -1,0 +1,33 @@
+.dashboard-main{
+    display: flex;
+}
+.dashboard-container{
+    margin: auto;
+    margin-top: 5%;
+}
+.dashboard-heading{
+    text-align: center;
+    margin: auto;
+    width: 20%;
+    color: rgb(76, 76, 76);
+    border-bottom: 1px solid rgb(76, 76, 76);
+    margin-top: 40px;
+    font-weight: 600;
+    font-size: 25px;
+}
+.dashboard-content{
+    margin-top: 5%;
+    display: flex;
+}
+.dashboard-divs{
+    border: 1px solid black;
+    width: 20vw;
+    height: 10vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    margin: 5%;
+}

@@ -34,6 +34,7 @@ const Jewelery = () => {
             </div>
         )
         }
+        return null;
     })
 
     useEffect(() => {
