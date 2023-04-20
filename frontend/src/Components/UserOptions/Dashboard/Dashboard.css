@@ -2,8 +2,8 @@
     display: flex;
 }
 .dashboard-container{
-    margin: auto;
-    margin-top: 5%;
+    height:unset;
+    border-left: 1px solid black;
 }
 .dashboard-heading{
     text-align: center;
@@ -16,8 +16,8 @@
     font-size: 25px;
 }
 .dashboard-content{
-    margin-top: 5%;
     display: flex;
+    flex-wrap: wrap;
 }
 .dashboard-divs{
     border: 1px solid black;
@@ -29,5 +29,5 @@
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    margin: 5%;
+    margin: 5% auto;
 }
