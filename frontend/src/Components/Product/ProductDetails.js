@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./ProductDetails.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeSelectedProduct, selectedProduct } from "../../Redux/actions/productAction"
 import {useAlert} from "react-alert";
+import {addItemsToCart} from "../../Redux/actions/cartAction";
 
 const ProductDetails = () => {
 
@@ -14,13 +15,24 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
 
+  const [quantity, setQuantity] = useState(1);
+
+  const onIncrementHandler=()=>{
+    setQuantity(quantity+1);
+  }
+
+  const onDecrementHandler=()=>{
+    if(quantity === 1) return;
+
+    setQuantity(quantity - 1); 
+  }
+
   useEffect(() => {
     const fetchProductDetails = async () => {
       const response = await axios(`https://fakestoreapi.com/products/${productId}`).catch((err) => {
         console.log(err);
       })
       dispatch(selectedProduct(response.data));
-      console.log(response.data);
     }
 
 
@@ -31,6 +43,7 @@ const ProductDetails = () => {
   }, [dispatch, productId])
 
   const addToCartHandler = () => {
+    dispatch(addItemsToCart(id, quantity));
     alert.success("Product Successfully added to cart");
   }
 
@@ -54,6 +67,11 @@ const ProductDetails = () => {
           </div>
           <div>
             <h1>$ {price}</h1>
+          </div>
+          <div>
+            <button onClick={onDecrementHandler} className='incDec-btn'>-</button>
+            <span>{quantity}</span>
+            <button onClick={onIncrementHandler} className='incDec-btn'>+</button>
           </div>
           <div>
             <h4>Description:- </h4> 

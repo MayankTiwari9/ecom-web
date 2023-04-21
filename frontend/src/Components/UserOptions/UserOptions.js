@@ -2,7 +2,6 @@ import React, { Fragment, useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import { SpeedDial, SpeedDialAction} from "@material-ui/lab";
 import { Backdrop } from '@material-ui/core';
-import { Dashboard } from "@material-ui/icons";
 import { Person } from "@material-ui/icons";
 import { ShoppingCart } from '@material-ui/icons';
 import { ExitToApp } from '@material-ui/icons';
@@ -19,16 +18,13 @@ const UserOptions = () => {
     const [open, setOpen] = useState(false);
 
     const options = [
-        {icon: <Dashboard/>, name: "Dashboard", func: dashboard },
         { icon: <ListAlt />, name: "Orders", func: orders },
         { icon: <Person />, name: "Profile", func: account },
         { icon: <ShoppingCart style={{color:"tomato"}}/>, name: `Cart(7)`, func: cart},
         { icon: <ExitToApp />, name: "Logout", func: logoutUser },
     ]
 
-    function dashboard(){
-        navigate("/admin/dashboard");
-    }
+    
     function orders(){
         navigate("/orders");
     }
