@@ -1,0 +1,42 @@
+.contact-main{
+    text-align: center;
+    background-color: rgb(249,249,251);
+}
+.contact-heading{
+    padding: 3% 0% 2% 0%;
+    color: rgb(15,16,73);
+    font-family: 'Roboto';
+}
+.contact-para{
+    color: rgb(75, 75, 75);
+    font-weight: 400;
+    font-size: 15px;
+}
+.contact-container{
+    display: flex;
+    margin: 4%;
+}
+.contact-left{
+    width: 40%;
+    background-color: rgb(62,31,146);
+    color: white;
+    text-align: start;
+    padding: 2%;
+    border-radius: 25px
+}
+.contact-left-heading{
+    margin: 5%;
+}
+.contact-left-para{
+    margin: 5%;
+    color: rgb(219, 219, 219);
+}
+/* rgb(250,148,157) */
+.contact-left > div{
+    display: flex;
+    margin: 10% 0% 10% 5%;
+}
+.contact-left > div > svg{
+    color: rgb(250,148,157);
+    padding-right: 2%;
+}

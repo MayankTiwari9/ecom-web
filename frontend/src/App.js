@@ -12,8 +12,9 @@ import Jewelery from './Components/Products/Jewelery';
 import Electronics from './Components/Products/Electronics';
 import Login from './Components/User/Login';
 import Register from './Components/User/Register';
-import UserOptions from "./Components/UserOptions/UserOptions";
+// import UserOptions from "./Components/UserOptions/UserOptions";
 import Cart from './Components/UserOptions/Cart/Cart';
+import ContactUs from './Components/ContactUs/ContactUs';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
   return (
     <BrowserRouter>
     <Header />
-    <UserOptions/>
+    {/* <UserOptions/> */}
     <Routes>
       <Route exact path='/' element={<Home/>}/>
       <Route exact path='/products' element={<Products/>}/>
@@ -33,6 +34,7 @@ function App() {
       <Route exact path='/login' element={<Login/>}/>
       <Route exact path='/register' element={<Register/>}/>
       <Route exact path='/cart' element={<Cart/>}/>
+      <Route excat path="/contact" element={<ContactUs/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
