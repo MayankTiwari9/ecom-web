@@ -3,85 +3,99 @@ import "./Cart.css";
 import CartItemCard from './CartItemCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItemsToCart, removeItemsFromCart } from '../../../Redux/actions/cartAction';
+import { Link } from 'react-router-dom';
+import { RemoveShoppingCart } from '@material-ui/icons';
+import {Typography} from "@material-ui/core";
 
 const Cart = () => {
 
   const dispatch = useDispatch();
 
-    const {cartItems} = useSelector((state) => state.cart);
-    console.log(cartItems); 
-    
+  const { cartItems } = useSelector((state) => state.cart);
 
-    const increaseQuantity = (id, quantity)=>{
-      console.log(id);
-      console.log(quantity);
-      const newQty = quantity + 1;
-      dispatch(addItemsToCart(id,newQty));
+
+  const increaseQuantity = (id, quantity) => {
+    console.log(id);
+    console.log(quantity);
+    const newQty = quantity + 1;
+    dispatch(addItemsToCart(id, newQty));
   }
 
-  const decreaseQuantity = (id, quantity)=>{
+  const decreaseQuantity = (id, quantity) => {
     const newQty = quantity - 1;
-    if(1 >= quantity){
-        return ; 
+    if (1 >= quantity) {
+      return;
     }
-    dispatch(addItemsToCart(id,newQty));
+    dispatch(addItemsToCart(id, newQty));
   }
 
-  const deleteCartItems = (id) =>{
+  const deleteCartItems = (id) => {
     dispatch(removeItemsFromCart(id));
-}
+  }
 
   return (
     <>
-    <div>
-      <div>
-        <div>
-          <div>
-          Shopping Cart
+      {cartItems.length === 0 ? (
+          <div className='emptyCart'>
+                <RemoveShoppingCart/>
+                <Typography>Your Cart is Empty</Typography> 
+                <Link to="/products">View Product</Link>
+            </div>
+      ) : (
+        <>
+          <div className='cart-main'>
+            <div className='cart-container-left'>
+              <div className='cart-heading'>
+                <h3>Shopping Cart</h3>
+                <h4>{cartItems.length} Items</h4>
+              </div>
+              <div>
+                <div className='cart-product'>
+                  <div className='cart-details'>Product Details</div>
+                  <div>Price</div>
+                  <div>Quantity</div>
+                  <div>Total</div>
+                </div>
+                <div>
+
+                  {cartItems && cartItems.map((item) => (
+                    <div key={item.id} className='card'>
+                      <CartItemCard item={item} deleteCartItems={deleteCartItems} />
+                      <div className="cartInput">
+                        <button className='button'
+                          onClick={() => decreaseQuantity(item.id, item.quantity)}
+                        >-</button>
+                        <input type="number" value={item.quantity} readOnly />
+                        <button className='button'
+                          onClick={() => increaseQuantity(item.id, item.quantity)}
+                        >+</button>
+                      </div>
+                      <p className="cartSubtotal">{`$${(item.price * item.quantity).toFixed(2)}`}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className='cart-container-right'>
+              <div className='orderSummary-div'>
+                <h3>Order Summary</h3>
+              </div>
+              <div className='totalItem-div'>
+                <p>Total Items</p>
+                <span>{cartItems.length}</span>
+              </div>
+              <div className='totalCost-div'>
+                <p>Total Cost</p>
+                <p>{`$${cartItems.reduce(
+                  (acc, item) => acc + item.quantity * item.price, 0
+                )}`}</p>
+              </div>
+              <button className='checkout-btn'>Checkout</button>
+            </div>
           </div>
-          <div>
-            3 Items
-          </div>
-        </div>
-        <div>
-          cart Items Card
-        </div>
-      </div>
-      <div>
-        <div>
-        Order Summary
-        </div>
-        <div>
-          <div>Item 3</div>
-          <div>Price</div>
-        </div>
-        <div>
-          <p>SubTotal</p>
-          <p>totol Price</p>
-        </div>
-        <button>Checkout</button>
-      </div>
-    </div>
-    {cartItems && cartItems.map((item) => (
-      <>
-      <div>
-        <img src={item.image} alt='bag'/>
-        <p>{item.price*item.quantity}</p>
-        <p>{item.title}</p>
-      </div>
-      <CartItemCard item={item} deleteCartItems={deleteCartItems}/>
-      <div className="cartInput">
-      <button 
-      onClick={()=> decreaseQuantity(item.id, item.quantity)}
-      >-</button>
-      <input type="number" value={item.quantity} readOnly/>
-      <button 
-      onClick={()=> increaseQuantity(item.id, item.quantity)}
-      >+</button>
-  </div>
-      </>
-    ))}
-    </> 
+        </>
+      )}
+    </>
   )
 }
 

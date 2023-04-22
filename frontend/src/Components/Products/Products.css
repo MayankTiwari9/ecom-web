@@ -16,6 +16,7 @@
 .products-main{
     margin-top: 5%;
     height: fit-content;
+    margin-bottom: 5%;
 }
 .products-container{
     display: flex;

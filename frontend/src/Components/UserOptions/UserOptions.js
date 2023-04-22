@@ -8,11 +8,14 @@ import { ExitToApp } from '@material-ui/icons';
 import { ListAlt } from '@material-ui/icons';
 import "./UserOptions.css";
 import {useAlert} from "react-alert";
+import { useSelector } from 'react-redux';
 
 
 const UserOptions = () => {
 
     const alert = useAlert();
+    
+    const {cartItems} = useSelector((state) => state.cart);
 
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
@@ -20,7 +23,7 @@ const UserOptions = () => {
     const options = [
         { icon: <ListAlt />, name: "Orders", func: orders },
         { icon: <Person />, name: "Profile", func: account },
-        { icon: <ShoppingCart style={{color:"tomato"}}/>, name: `Cart(7)`, func: cart},
+        { icon: <ShoppingCart style={{color:"tomato"}}/>, name: `Cart(${cartItems.length})`, func: cart},
         { icon: <ExitToApp />, name: "Logout", func: logoutUser },
     ]
 
