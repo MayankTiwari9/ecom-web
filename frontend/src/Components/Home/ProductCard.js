@@ -33,7 +33,7 @@ const ProductCard = () => {
       <div className='productcart-main'>
         {renderList}
       </div>
-      <h1 className='productCart-heading'>To Get All Products <Link to="/products">Click Here</Link></h1>
+      <h1 className='productCart-heading'><Link to="/products">All Products</Link></h1>
     </>
 
   )

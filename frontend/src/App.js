@@ -15,6 +15,7 @@ import Register from './Components/User/Register';
 // import UserOptions from "./Components/UserOptions/UserOptions";
 import Cart from './Components/UserOptions/Cart/Cart';
 import ContactUs from './Components/ContactUs/ContactUs';
+import AboutUs from './Components/AboutUs/AboutUs';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
       <Route exact path='/register' element={<Register/>}/>
       <Route exact path='/cart' element={<Cart/>}/>
       <Route excat path="/contact" element={<ContactUs/>}/>
+      <Route exact path='/about' element={<AboutUs/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

@@ -40,3 +40,41 @@
     color: rgb(250,148,157);
     padding-right: 2%;
 }
+.contact-right{
+    width: 60%;
+    background-color: #ffffff;
+    border-radius: 25px;
+}
+.contact-form{
+    padding: 3%;
+    margin: auto;
+}
+.contact-form-div{
+    display: flex;
+    height: 5vmax;
+    margin: 3% 0% 3% 10%;
+    padding: 2% 0% 2% 0%;
+}
+.contact-form-div > div{
+    margin-right: 10%;
+    width: 220px;
+    text-align: start;
+}
+.contact-form-div > div > p{
+    text-align: start;
+    color: rgb(75,75,75);
+    margin-bottom: 20px;
+}
+.contact-form-div > div > input{
+    border: none;
+    border-bottom: 1px solid rgb(161, 159, 157);
+    width: 200px;
+}
+.contact-btn{
+    width: 150px;
+    height: 3vmax;
+    border-radius: 18px;
+    border: none;
+    background-color: rgb(62,31,146);
+    color: #ffffff
+}

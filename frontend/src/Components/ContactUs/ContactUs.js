@@ -33,33 +33,31 @@ const ContactUs = () => {
                     </div>
                 </div>
                 <div className='contact-right'>
-                    <form>
-                        <div className='userName'>
+                    <form className='contact-form'>
+                        <div className='contact-form-div'>
                             <div>
-                                <label>First Name</label>
+                                <p>First Name</p>
                                 <input type='text' />
                             </div>
                             <div>
-                                <label>Last Name</label>
+                                <p>Last Name</p>
                                 <input type='text' />
                             </div>
                         </div>
-                        <div className='main-phone'>
+                        <div className='contact-form-div'>
                             <div>
-                                <label>main</label>
+                                <p>Mail</p>
                                 <input type='email' />
                             </div>
                             <div>
-                                <label>Phone</label>
+                                <p>Phone</p>
                                 <input type='number' />
                             </div>
                         </div>
-                        <div className='message'>
+                        <div className='contact-form-div'>
                             <div>
                                 <p>Message</p>
-                                <textarea placeholder='Write your message'>
-
-                                </textarea>
+                                <input type='text' placeholder='Write your message'/>
                             </div>
                         </div>
                         <button className='contact-btn'>Send Message</button>
