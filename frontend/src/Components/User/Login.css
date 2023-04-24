@@ -83,3 +83,37 @@
     font: 300 0.9vmax cursive;
     color: black;
 }
+
+@media screen and (max-width: 600px) {
+    .login-main {
+        width: 100vw;
+    height: 100vh;
+    }
+    .login-div {
+        display: flex;
+        width: 80%;
+        align-items: center;
+        padding-left: 2vmax;
+    }
+    .login-form > div > input {
+        padding:2vmax 4vmax;
+        width: 80%;
+        font: 300 1.6vmax cursive;
+        margin: auto;
+    }
+    .login-div > svg {
+        transform: translateX(6vmax);
+        font-size: 1.8vmax;
+    }
+    .login-div > p {
+        font: 300 2vmax cursive;
+    }
+    .loginBtn {
+        font: 300 1.9vmax "Roboto";
+        width: 96%;
+    }
+    .login-div > a {
+        font: 300 2vmax cursive;
+        color: black;
+    }
+}

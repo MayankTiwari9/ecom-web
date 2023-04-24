@@ -84,6 +84,9 @@
     text-align: end;
     margin-left: 1%;
   }
+  .cartSubtotal-para{
+    display: none;
+  }
   .remove-btn{
     background-color: tomato;
     color: white;
@@ -160,4 +163,54 @@
     cursor: pointer;
     font: 400 1vmax "Roboto";
     text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .cart-product {
+        display:none
+    }
+    .cart-main {
+        display: block;
+    }
+    .card {
+        display: block;
+    }
+    .CartItemCard-main {
+        width: 100%;
+    }
+    .cart-container-left {
+        padding: 6% 2% 4% 2%;
+        width: 96%;
+    }
+    .CartItemCard > img {
+        width: 85px; 
+    height: 90px;
+    }
+    .CartItemCard-div {
+        display: flex;
+    width: 70%;
+    padding: 12px;
+    }
+    .remove-btn {
+        width: 12vmax;
+        height: 4vmax;
+    }
+    .cartInput {
+        text-align: center;
+    }
+    .cartInput>input {
+        width: 7vmax;
+        font: 400 3vmax "Roboto";
+    } 
+    .cartSubtotal {
+        text-align: center;
+    }
+    .cartSubtotal-para{
+        display:block;
+        margin: 6px 0px;
+      }
+      .cart-container-right {
+        width: 92%;
+        background-color: #ffffff;
+    }
 }

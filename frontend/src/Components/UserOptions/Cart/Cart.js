@@ -70,6 +70,7 @@ const Cart = () => {
                           onClick={() => increaseQuantity(item.id, item.quantity)}
                         >+</button>
                       </div>
+                      <p className='cartSubtotal-para'>Subtotal:- </p>
                       <p className="cartSubtotal">{`$${(item.price * item.quantity).toFixed(2)}`}</p>
                     </div>
                   ))}
