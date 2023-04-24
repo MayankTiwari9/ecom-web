@@ -47,3 +47,26 @@
     font-size: 20px;
     font-weight: 300;
 }
+
+@media screen and (max-width: 600px) {
+    .products-navbar > a {
+        font-size: 10px;
+    }
+    .products-container {
+        display: block;
+        width: 90%;
+        padding: 5%;
+    }
+    .products-image {
+        margin: auto;
+        margin-top: 15%;
+    }
+    .products-image > img {
+    width: 160px;
+    height: 200px;
+}
+.products-description {
+    width: 100%;
+    margin: auto;
+}
+}

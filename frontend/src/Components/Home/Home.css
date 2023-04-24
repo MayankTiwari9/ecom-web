@@ -102,3 +102,35 @@
     font: 300 1.5vmax cursive;
     color: black;
 }
+
+@media screen and (max-width: 600px) {
+    .home-container>h1 {
+        font-size: 20px;
+    }
+    .scroll {
+        width: 13vmax;
+        height: 4vmax;
+    }
+    .productCart-heading{
+        width: 80%;
+    }
+    .productCard-container {
+    width: 350px;
+}
+    .productCard-image {
+        float: none;
+        margin: auto;
+        width: 150px;
+    }
+    .productCard-image>img {
+        width: 150px;
+    }
+    .productCard-details{
+       padding-top: 40px; 
+    }
+    .productCart-heading > a {
+    text-decoration: none;
+    font: 300 3.5vmax cursive;
+    color: black;
+}
+}

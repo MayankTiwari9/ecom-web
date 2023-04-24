@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'; 
 import "./Home.css";
 import {CgMouse} from "react-icons/cg"; 
 import ProductCard from './ProductCard';

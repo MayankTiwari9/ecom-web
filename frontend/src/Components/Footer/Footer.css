@@ -1,7 +1,6 @@
 .footer-container{
     background-color: rgb(24,25,27);
     color: white;
-    /* margin-top: 10vmax; */
     padding: 4vmax;
     margin-bottom: 0px;
 }
@@ -68,4 +67,37 @@
 }
 .footer-socialmedia > span > svg{
     width: 30px;
+}
+
+@media screen and (max-width: 600px) {
+    .footer-up {
+        padding-bottom: 12%;
+    }
+    .footer-up > h2 {
+        width: 100%;
+        font-size: 20px;
+    }
+    .footer-up > div > input {
+        width: 50%;
+        font: 400 2vmax cursive;
+    }
+    .footer-up > div > svg{
+        font-size: 2.4vmax;
+    }
+    .footer-down {
+        display: block;
+    }
+    .footer-logo {
+        width: 100%;
+    }
+    .footer-logo > img {
+        width: 20vmax;
+        margin: 1vmax;
+    }
+    .footer-mid-right {
+        display: block;
+    }
+    .footer-mid-right > a, .footer-tc > a {
+        font-size: 2vmax;
+    }
 }
