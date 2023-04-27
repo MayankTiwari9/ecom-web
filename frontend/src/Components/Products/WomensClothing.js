@@ -1,11 +1,8 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setProducts } from '../../Redux/actions/productAction';
 
 const WomensClothing = () => {
-    const dispatch = useDispatch();
     const allProducts = useSelector((state) => state.allProducts.products);
 
     const getData = allProducts.map((products) => {
@@ -35,15 +32,6 @@ const WomensClothing = () => {
         return null;
     })
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            const response = await axios.get("https://fakestoreapi.com/products").catch((err) => {
-                console.log(err);
-            })
-            dispatch(setProducts(response.data));
-        }
-        fetchProducts();
-    }, [dispatch]);
 
 
     return (

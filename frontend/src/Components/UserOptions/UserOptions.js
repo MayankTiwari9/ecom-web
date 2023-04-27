@@ -6,6 +6,8 @@ import { Person } from "@material-ui/icons";
 import { ShoppingCart } from '@material-ui/icons';
 import { ExitToApp } from '@material-ui/icons';
 import { ListAlt } from '@material-ui/icons';
+import { Dashboard } from "@material-ui/icons";
+
 import "./UserOptions.css";
 import {useAlert} from "react-alert";
 import { useSelector } from 'react-redux';
@@ -21,6 +23,7 @@ const UserOptions = () => {
     const [open, setOpen] = useState(false);
 
     const options = [
+        { icon: <Dashboard />, name: "Dashboard", func: dashboard },
         { icon: <ListAlt />, name: "Orders", func: orders },
         { icon: <Person />, name: "Profile", func: account },
         { icon: <ShoppingCart style={{color:"tomato"}}/>, name: `Cart(${cartItems.length})`, func: cart},
@@ -28,6 +31,9 @@ const UserOptions = () => {
     ]
 
     
+    function dashboard(){
+        navigate("/admin/dashboard");
+    }
     function orders(){
         navigate("/orders");
     }

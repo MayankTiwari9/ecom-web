@@ -4,7 +4,7 @@ import "./Home.css";
 import {Link} from "react-router-dom";
 
 const ProductCard = () => {
-  const products = useSelector((state) => state.allProducts.products);
+  const products = useSelector((state) => state.featuredProducts.products);
   const renderList = products.map((product) => {
     const { id, title, price, image, category, rating } = product;
 

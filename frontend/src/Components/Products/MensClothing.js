@@ -1,8 +1,7 @@
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setProducts } from '../../Redux/actions/productAction';
+import { getAllProducts } from '../../Redux/actions/productAction';
 
 const MensClothing = () => {
     const dispatch = useDispatch();
@@ -36,13 +35,7 @@ const MensClothing = () => {
     })
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            const response = await axios.get("https://fakestoreapi.com/products").catch((err) => {
-                console.log(err);
-            })
-            dispatch(setProducts(response.data));
-        }
-        fetchProducts();
+        dispatch(getAllProducts());
     }, [dispatch]);
 
 
