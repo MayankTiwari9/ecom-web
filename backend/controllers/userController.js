@@ -1,91 +1,91 @@
 const User = require("../models/userModels");
+const ErrorHandler = require("../utils/errorHandler");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
 //Register a user
 
-exports.registerUser = async (req,res) => {
+exports.registerUser = catchAsyncErrors(async (req,res) => {
     const user = await User.create(req.body);
 
     res.status(201).json({
         success:true,
         user
     })
-}
+});
 
 
 //Login User
 
-exports.loginUser = async (req,res) => {
+exports.loginUser = catchAsyncErrors(async (req,res) => {
     const {email, password} = req.body;
 
     if(!email || !password){
-        return res.status(500).json({
-            success:false,
-            message: "Please Enter Email and Password"
-        })
+        return next(new ErrorHandler("Please Enter Email and Password", 500));
     }
+
     const user = await User.findOne({email}).select("+password");
 
     if(!user){
-        return res.status(500).json({
-            success:false,
-            message: "Invalid Email or Password"
-        })
+        return next(new ErrorHandler("Invalid Email or Password", 500));
     }
 
     res.status(200).json({
         success:true,
         user
     })
-}
+});
 
 // Get User Detail
 
-exports.getUserDetails = async (req,res) => {
+exports.getUserDetails = catchAsyncErrors(async (req,res) => {
     const user = await User.findById(req.user.id);
+
+    if(!user){
+        return next(new ErrorHandler("User Not Found", 500));
+    }
 
     res.status(200).json({
         success:true,
         user, 
     })
-}
+});
 
 // Get All Users -- Admin
 
-exports.getAllUsers = async (req,res) => {
+exports.getAllUsers = catchAsyncErrors(async (req,res) => {
     const users = await User.find();
 
     res.status(200).json({
         success:true,
         users
     })
-}
+});
 
 //Get single user -- Admin
 
-exports.getSingleUser = async (req, res, next) => {
+exports.getSingleUser = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id);
  
-    if(!user) {
-        return res.status(500).json({
-            success:false,
-            message: `User does not exist with id ${req.params.id}`
-        })
+    
+    if(!user){
+        return next(new ErrorHandler(`User does not exist with id ${req.params.id}`, 500));
     }
+
     res.status(200).json({
         success:true,
         user
     })
-} 
+} );
 
 // Delete User -- Admin
 
-exports.deleteUser = async (req, res, next) => {
+exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.params.id);
+    
+
+    
     if(!user){
-        return res.status(500).json({
-            success:false,
-            message: `User Does not exist with id ${req.params.id}`
-        })
+        return next(new ErrorHandler(`User does not exist with id ${req.params.id}`, 500));
     }
 
     await user.deleteOne();
@@ -94,4 +94,4 @@ exports.deleteUser = async (req, res, next) => {
         success:true,
         message: "User Deleted Successfully"
     })
-}
+});
