@@ -4,7 +4,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home';
-import ProductDetails from './Components/Product/ProductDetails';
+import ProductDetails from './Components/Product/ProductDetails'; 
 import Products from './Components/Products/Products';
 import MensClothing from './Components/Products/MensClothing';
 import WomensClothing from './Components/Products/WomensClothing';

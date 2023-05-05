@@ -9,7 +9,7 @@ import {addItemsToCart} from "../../Redux/actions/cartAction";
 const ProductDetails = () => {
 
   const product = useSelector((state) => state.product.product);
-  const { id, title, price, description, category, image } = product;
+  const { id, title, price, description, category, image } = product.product;
   const { productId } = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -27,7 +27,7 @@ const ProductDetails = () => {
   }
 
   useEffect(() => {
-    dispatch(selectedProduct(productId));
+    dispatch(selectedProduct(productId)); 
 
     return () => {
       dispatch(removeSelectedProduct());

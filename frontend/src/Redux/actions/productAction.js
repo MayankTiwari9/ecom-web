@@ -2,7 +2,8 @@ import { ActionTypes } from "../constants/productConstants";
 import axios from "axios";
 
 export const getAllProducts = () => async (dispatch) => {
-  const {data} = await axios.get("https://fakestoreapi.com/products");
+  const {data} = await axios.get("/api/v1/products");
+  console.log(data); 
 
   dispatch({
     type: ActionTypes.ALL_PRODUCTS,
@@ -21,7 +22,7 @@ export const setProducts = () => async (dispatch) => {
 
 export const selectedProduct = (id) => async (dispatch) => {
 
-  const {data} = await axios.get(`https://fakestoreapi.com/products/${id}`);
+  const {data} = await axios.get(`/api/v1/product/${id}`);
 
   dispatch({
     type: ActionTypes.SELECTED_PRODUCT,
