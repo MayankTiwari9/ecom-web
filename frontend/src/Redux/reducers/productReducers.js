@@ -1,27 +1,56 @@
-import { ActionTypes } from "../constants/productConstants";
+import { 
+  ALL_PRODUCT_FAIL, 
+  ALL_PRODUCT_REQUEST, 
+  ALL_PRODUCT_SUCCESS,
+  FEATURED_PRODUCT_REQUEST,
+  FEATURED_PRODUCT_SUCCESS,
+  FEATURED_PRODUCT_FAIL,  
+  SINGLE_PRODUCT_REQUEST,
+  SINGLE_PRODUCT_SUCCESS,
+  SINGLE_PRODUCT_FAIL,
+  ActionTypes 
+} from "../constants/productConstants";
 
-// const intialState = {
-//   products: [],
-// };
 
 export const allProductsReducer = (state = {products: []}, action) => {
   switch(action.type){
-    case ActionTypes.ALL_PRODUCTS:
+    case ALL_PRODUCT_REQUEST: 
+    return{
+      loading: true,
+      product: []
+    }
+    case ALL_PRODUCT_SUCCESS:
       return {
-        products : action.payload,
+        loading: false,
+        products : action.payload.products,
       }
-
+      case ALL_PRODUCT_FAIL:
+        return{
+          loading: false,
+          payload: action.payload
+        }
       default:
         return state;
   }
 }
 
-export const productsReducer = (state = {products: []}, action) => {
+export const FeaturedProductReducer = (state = {products: []}, action) => {
   switch (action.type) {
-    case ActionTypes.SET_PRODUCTS:
+    case FEATURED_PRODUCT_REQUEST:
       return { 
-        products: action.payload,
+        loading: true,
+        product: []
        };
+     case FEATURED_PRODUCT_SUCCESS:
+      return {
+        loading: false,
+        products : action.payload.products,
+      }  
+      case FEATURED_PRODUCT_FAIL:
+        return{
+          loading: false,
+          payload: action.payload
+        }
     default:
       return state;
   }
@@ -29,11 +58,21 @@ export const productsReducer = (state = {products: []}, action) => {
 
 export const selectedProductsReducer = (state = {product: {}}, action) => {
   switch (action.type){
-      case ActionTypes.SELECTED_PRODUCT:
+    case SINGLE_PRODUCT_REQUEST:
+      return{
+        loading: true,
+        ...state,
+      }
+      case SINGLE_PRODUCT_SUCCESS:
           return {
-              product: action.payload
+            loading: false,
+              product: action.payload,
           }
-
+          case SINGLE_PRODUCT_FAIL:
+            return{
+              loading: false,
+              error: action.payload
+            }
       default: 
       return state;
   }

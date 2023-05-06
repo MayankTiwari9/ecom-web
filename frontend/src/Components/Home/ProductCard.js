@@ -4,8 +4,8 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 
 const ProductCard = () => {
-  const { products } = useSelector((state) => state.featuredProducts.products);
-  console.log(products);
+  const { products, loading } = useSelector((state) => state.featuredProducts);
+
 
 
   return (

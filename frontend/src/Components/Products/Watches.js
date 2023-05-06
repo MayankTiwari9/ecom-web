@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { getAllProducts } from '../../Redux/actions/productAction';
+import React from 'react';
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import "./Products.css";
 
-const MensClothing = () => {
-    const dispatch = useDispatch();
+const Watches = () => {
+  
     const allProducts = useSelector((state) => state.allProducts.products);
 
     const getData = allProducts.map((products) => {
-        const { id, title, price, description, category, image } = products; 
-        if(category === "men's clothing"){
+        const { id, title, price, description, category, image } = products;
+        if(category === "jewelery"){
         return (
 
             <div className='products-main'>
@@ -34,9 +34,6 @@ const MensClothing = () => {
         return null;
     })
 
-    useEffect(() => {
-        dispatch(getAllProducts());
-    }, [dispatch]);
 
 
     return (
@@ -46,7 +43,7 @@ const MensClothing = () => {
                     <Link to={"/products"}>All Products</Link>
                     <Link to={"/products/mens"}>men's clothing</Link>
                     <Link to={"/products/womens"}>women's clothing</Link>
-                    <Link to={"/products/jewelery"}>jewelery</Link>
+                    <Link to={"/products/jewelry"}>jewelery</Link>
                     <Link to={"/products/electronics"}>electronics</Link>
                 </nav>
             </div>
@@ -55,4 +52,4 @@ const MensClothing = () => {
     )
 }
 
-export default MensClothing;
+export default Watches

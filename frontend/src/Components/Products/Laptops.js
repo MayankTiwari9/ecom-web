@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const WomensClothing = () => {
+const Laptops = () => {
     const allProducts = useSelector((state) => state.allProducts.products);
 
     const getData = allProducts.map((products) => {
@@ -50,4 +50,4 @@ const WomensClothing = () => {
     )
 }
 
-export default WomensClothing;
+export default Laptops;

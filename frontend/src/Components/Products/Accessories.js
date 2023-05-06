@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const Electronics = () => {
+const Accessories = () => {
     const allProducts = useSelector((state) => state.allProducts.products);
 
     const getData = allProducts.map((products) => {
@@ -50,4 +50,4 @@ const Electronics = () => {
     )
 }
 
-export default Electronics;
+export default Accessories;

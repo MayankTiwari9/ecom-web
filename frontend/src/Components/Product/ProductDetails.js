@@ -8,6 +8,7 @@ import {addItemsToCart} from "../../Redux/actions/cartAction";
 
 const ProductDetails = () => {
 
+  const {loading} = useSelector((state) => state.product);
   const {product} = useSelector((state) => state.product.product);
   const { productId } = useParams();
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const ProductDetails = () => {
         <div className='productDetails-detail'>
           <div>
             <p>Category :- </p>
-            <h4>{product.category}</h4>
+            <h4>{product.subCategory}</h4>
           </div>
           <div>
             <h1>{product.name}</h1>

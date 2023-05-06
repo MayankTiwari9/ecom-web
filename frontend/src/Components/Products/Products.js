@@ -9,7 +9,8 @@ const Products = () => {
 
     const dispatch = useDispatch();
    
-    const {products} = useSelector((state) => state.allProducts.products); 
+    const {products, loading} = useSelector((state) => state.allProducts);
+  
 
     useEffect(() => {
         dispatch(getAllProducts());
@@ -20,10 +21,10 @@ const Products = () => {
             <div>
                 <nav className='products-navbar'>
                     <Link to={"/products"}>All Products</Link>
-                    <Link to={"/products/mens"}>men's clothing</Link>
-                    <Link to={"/products/womens"}>women's clothing</Link>
-                    <Link to={"/products/jewelery"}>jewelery</Link>
-                    <Link to={"/products/electronics"}>electronics</Link>
+                    <Link to={"/products/mobiles"}>Mobiles</Link>
+                    <Link to={"/products/laptops"}>Laptops</Link>
+                    <Link to={"/products/watches"}>Watches</Link>
+                    <Link to={"/products/accessories"}>Accessories</Link>
                 </nav>
             </div>
             {products && products.map((item, index) => (
