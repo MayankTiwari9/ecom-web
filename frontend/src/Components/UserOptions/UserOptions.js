@@ -7,7 +7,7 @@ import { ShoppingCart } from '@material-ui/icons';
 import { ExitToApp } from '@material-ui/icons';
 import { ListAlt } from '@material-ui/icons';
 import { Dashboard } from "@material-ui/icons";
-
+import profile from "../../images/Profile.png"
 import "./UserOptions.css";
 import {useAlert} from "react-alert";
 import { useSelector } from 'react-redux';
@@ -38,7 +38,7 @@ const UserOptions = () => {
         navigate("/orders");
     }
     function account(){
-        navigate("/account");
+        navigate("/account"); 
     }
     function logoutUser(){
         alert.success("Logout Successfully");
@@ -51,7 +51,7 @@ const UserOptions = () => {
     <Fragment>
         <Backdrop open={open} style={{zIndex: "10"}}/>
         <SpeedDial ariaLabel='SpeedDial tooltip example' onClose={() => setOpen(false)} onOpen={() => setOpen(true)} open={open} style={{zIndex: "11"}}
-                direction="down" className='speedDial' icon={<img className="speedDialIcon" src={"/Profile.png"} alt="Profile" />}>
+                direction="down" className='speedDial' icon={<img className="speedDialIcon" src={profile} alt="Profile" />}>
                 {options.map((item)=>(
                     <SpeedDialAction key={item.name} icon={item.icon} tooltipTitle={item.name} 
                     onClick={item.func} tooltipOpen={window.innerWidth <= 600 ? true : false}/>

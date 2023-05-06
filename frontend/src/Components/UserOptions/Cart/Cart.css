@@ -71,12 +71,10 @@
     background-color: rgb(98,98,98);
     border: none;
     color: white;
-    padding: 5px 7px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 13px;
-    margin: 5px 5px;
+    font-size: 16px;
     cursor: pointer;
   }
   .cartSubtotal{

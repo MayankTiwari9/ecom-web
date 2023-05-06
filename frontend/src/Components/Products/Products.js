@@ -8,41 +8,12 @@ import "./Products.css";
 const Products = () => {
 
     const dispatch = useDispatch();
-
    
-    const allProducts = useSelector((state) => state.allProducts.products); 
-    // console.log(allProducts.products);
-
-    const getData = allProducts.products.map((products) => {  
-        const { _id, name, price, description, image } = products; 
-        return ( 
-
-            <div className='products-main'>
-                <Link to={`/product/${_id}`}>
-                    <div className='products-container'>
-                        <div className='products-image'>
-                            <img src={image} alt={_id} /> 
-                        </div>
-                        <div className='products-description'>
-                            <h3>{name}</h3>
-                            <h4>Product Description</h4>
-                            <p>{description}</p>
-                        </div>
-                        <div className='products-amount'> 
-                            <h2>$ {price}</h2> 
-                        </div>
-                    </div>
-                </Link>
-            </div>
-        )
-    })
-
+    const {products} = useSelector((state) => state.allProducts.products); 
 
     useEffect(() => {
         dispatch(getAllProducts());
     }, [dispatch]);
-    
-
 
     return (
         <>
@@ -55,7 +26,25 @@ const Products = () => {
                     <Link to={"/products/electronics"}>electronics</Link>
                 </nav>
             </div>
-            {getData}
+            {products && products.map((item, index) => (
+                <div className='products-main' key={index}> 
+                            <Link to={`/product/${item._id}`}>
+                                 <div className='products-container'>
+                                     <div className='products-image'>
+                                         <img src={item.image} alt={index} /> 
+                                     </div>
+                                     <div className='products-description'>
+                                         <h3>{item.name}</h3>
+                                         <h4>Product Description</h4>
+                                         <p>{item.description}</p>
+                                     </div>
+                                     <div className='products-amount'> 
+                                         <h2>₹ {item.price}</h2> 
+                                     </div>
+                                 </div>
+                             </Link>
+                         </div>
+            ))}
         </>
     )
 }

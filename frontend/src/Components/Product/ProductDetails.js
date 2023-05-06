@@ -8,8 +8,7 @@ import {addItemsToCart} from "../../Redux/actions/cartAction";
 
 const ProductDetails = () => {
 
-  const product = useSelector((state) => state.product.product);
-  const { id, title, price, description, category, image } = product.product;
+  const {product} = useSelector((state) => state.product.product);
   const { productId } = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -35,30 +34,31 @@ const ProductDetails = () => {
   }, [dispatch, productId])
 
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(id, quantity));
+    dispatch(addItemsToCart(productId, quantity));  
     alert.success("Product Successfully added to cart");
   }
 
-  return (
-    <div className='productDetails-main'>
+  return (<>
+    {product && (
+      <div className='productDetails-main'>
       <div className='productDetails-container'>
         <div className='productDetails-image'>
-          <img src={image} alt={id} />
+          <img src={product.image} alt={product._id} />
         </div>
         <div className='productDetails-detail'>
           <div>
             <p>Category :- </p>
-            <h4>{category}</h4>
+            <h4>{product.category}</h4>
           </div>
           <div>
-            <h1>{title}</h1>
+            <h1>{product.name}</h1>
           </div>
           <div>
             <h4>Product Id :- </h4>
-            <p>{id}</p>
+            <p>{product._id}</p>
           </div>
           <div>
-            <h1>$ {price}</h1>
+            <h1>₹ {product.price}</h1>
           </div>
           <div>
             <button onClick={onDecrementHandler} className='incDec-btn'>-</button>
@@ -67,7 +67,7 @@ const ProductDetails = () => {
           </div>
           <div>
             <h4>Description:- </h4> 
-            <p>{description}</p>
+            <p>{product.description}</p>
           </div>
           <div>
             <button className='productDetails-btn' onClick={addToCartHandler}>Add To Cart</button>
@@ -75,6 +75,9 @@ const ProductDetails = () => {
         </div>
       </div>
     </ div>
+    )}
+    </>
+    
 
   )
 }

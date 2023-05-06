@@ -3,7 +3,6 @@ import axios from "axios";
 
 export const getAllProducts = () => async (dispatch) => {
   const {data} = await axios.get("/api/v1/products");
-  console.log(data); 
 
   dispatch({
     type: ActionTypes.ALL_PRODUCTS,

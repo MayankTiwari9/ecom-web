@@ -9,7 +9,7 @@ const CartItemCard = ({ item, deleteCartItems }) => {
             <img src={item.image} alt="ssa" />
             <div className='CartItemCard-div'>
                 <div  className='CartItemCard-div1'>
-                    <Link to={`/product/${item.id}`}>{item.title}</Link>
+                    <Link to={`/product/${item.id}`}>{item.name}</Link>
                 </div>
                 <div  className='CartItemCard-div2'>
                     <span>{`$ ${item.price}`}</span>
