@@ -14,7 +14,7 @@ const Products = () => {
     useEffect(() => {
         dispatch(getAllProducts());
     }, [dispatch]);
-
+  
     return (
         <>
             <div>
@@ -31,7 +31,7 @@ const Products = () => {
                             <Link to={`/product/${item._id}`}>
                                  <div className='products-container'>
                                      <div className='products-image'>
-                                         <img src={item.image} alt={index} /> 
+                                         <img src={item.images[0].url} alt={index} /> 
                                      </div>
                                      <div className='products-description'>
                                          <h3>{item.name}</h3>

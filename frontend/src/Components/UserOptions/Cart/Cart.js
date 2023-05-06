@@ -12,12 +12,9 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems);
 
 
   const increaseQuantity = (id, quantity) => {
-    console.log(id);
-    console.log(quantity);
     const newQty = quantity + 1;
     dispatch(addItemsToCart(id, newQty));
   }
@@ -72,7 +69,7 @@ const Cart = () => {
                         >+</button>
                       </div>
                       <p className='cartSubtotal-para'>Subtotal:- </p>
-                      <p className="cartSubtotal">{`$${(item.price * item.quantity).toFixed(2)}`}</p>
+                      <p className="cartSubtotal">{`₹${(item.price * item.quantity).toFixed(2)}`}</p>
                     </div>
                   ))}
                 </div>
@@ -88,7 +85,7 @@ const Cart = () => {
               </div>
               <div className='totalCost-div'>
                 <p>Total Cost</p>
-                <p>{`$${cartItems.reduce(
+                <p>{`₹${cartItems.reduce(
                   (acc, item) => acc + item.quantity * item.price, 0
                 )}`}</p>
               </div>

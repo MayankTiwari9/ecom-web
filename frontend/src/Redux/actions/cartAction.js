@@ -3,12 +3,12 @@ import {ActionTypes} from "../constants/cartConstant"
 
 export const addItemsToCart = (id , quantity) => async (dispatch,getState) => {
     const {data} = await axios.get(`/api/v1/product/${id}`);
-    console.log(data.product);
+    console.log(data);
 
     dispatch({type: ActionTypes.ADD_TO_CART,
         payload:{
             id,
-            image: data.image,
+            images: data.product.images[0].url,
             name: data.product.name,
             price: data.product.price,
             quantity,

@@ -10,8 +10,8 @@ export const getAllProducts = () => async (dispatch) => {
   })
 }
 
-export const setProducts = () => async (dispatch) => {
-  const {data} = await axios.get("https://fakestoreapi.com/products?limit=5");
+export const featuredProducts = () => async (dispatch) => {
+  const {data} = await axios.get("/api/v1/products/featured");
 
   dispatch({
       type: ActionTypes.SET_PRODUCTS,

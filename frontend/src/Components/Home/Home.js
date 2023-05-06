@@ -3,12 +3,12 @@ import "./Home.css";
 import {CgMouse} from "react-icons/cg"; 
 import ProductCard from './ProductCard';
 import {useDispatch} from "react-redux";
-import {setProducts} from "../../Redux/actions/productAction"
+import {featuredProducts} from "../../Redux/actions/productAction"
 
 const Home = () => {
   const dispatch = useDispatch(); 
   useEffect(() => {
-    dispatch(setProducts());
+    dispatch(featuredProducts());
   },[dispatch])
 
   return (

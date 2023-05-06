@@ -2,7 +2,7 @@ const Product = require("../models/productModels");
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 
-// Creating product -- Admin
+// Creating All product -- Admin
 
 exports.createProduct = catchAsyncErrors(async (req,res,next) => {
 
@@ -17,10 +17,23 @@ exports.createProduct = catchAsyncErrors(async (req,res,next) => {
     })
 });
 
+
 // Get all products
 exports.getAllProducts = catchAsyncErrors(async (req,res) => {
 
     const products = await Product.find();
+
+    res.status(200).json({
+        success: true,
+        products
+    })
+});
+
+
+// Get Featured products
+exports.getFeaturedProducts = catchAsyncErrors(async (req,res) => {
+
+    const products = await Product.find({category: "featured"});
 
     res.status(200).json({
         success: true,

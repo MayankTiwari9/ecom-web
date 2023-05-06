@@ -43,7 +43,7 @@ const ProductDetails = () => {
       <div className='productDetails-main'>
       <div className='productDetails-container'>
         <div className='productDetails-image'>
-          <img src={product.image} alt={product._id} />
+          <img src={product.images[0].url} alt={product._id} />
         </div>
         <div className='productDetails-detail'>
           <div>
