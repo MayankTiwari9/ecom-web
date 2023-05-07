@@ -12,7 +12,6 @@ import UserOptions from "./Components/UserOptions/UserOptions";
 import Cart from './Components/UserOptions/Cart/Cart';
 import ContactUs from './Components/ContactUs/ContactUs';
 import AboutUs from './Components/AboutUs/AboutUs';
-import Test from './Components/test/Test';
 import Laptops from './Components/Products/Laptops';
 import Watches from './Components/Products/Watches';
 import Accessories from './Components/Products/Accessories';
@@ -38,7 +37,6 @@ function App() {
       <Route exact path='/cart' element={<Cart/>}/>
       <Route excat path="/contact" element={<ContactUs/>}/>
       <Route exact path='/about' element={<AboutUs/>}/>
-      <Route exact path='/test' element={<Test/>} />
     </Routes>
     <Footer/>
     </BrowserRouter>

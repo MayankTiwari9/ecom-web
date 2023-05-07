@@ -5,6 +5,8 @@ import { BiLockOpenAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
 import { useDispatch } from "react-redux";
+// import profile from "../../images/Profile.png";
+import logo from "../../images/Profile.png";
 import { register } from '../../Redux/actions/userAction';
 
 const Register = () => {
@@ -18,25 +20,41 @@ const Register = () => {
 
     const {name, email, password} = user;
 
-    const registerDataChange = (e) => {
-        e.preventDefault();
-        setUser({ ...user, [e.target.name]: e.target.value})
-    }
+    const [avatar, setAvatar] = useState();
+    const [avatarPreview, setAvatarPreview] = useState({logo});
 
+    
     const submitHandler= (e)=>{
         e.preventDefault();
         const myForm = new FormData();
         myForm.set("name", name);
         myForm.set("email", email);
         myForm.set("password", password);
+        myForm.set("avatar", avatar);
         dispatch(register(myForm));
     }
+
+    const registerDataChange = (e) => {
+        if(e.target.name === "avatar"){
+            const reader = new FileReader();
+            reader.onload = () => {
+                if(reader.readyState === 2){
+                    setAvatarPreview(reader.result);
+                    setAvatar(reader.result);
+                }
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        } else {
+            setUser({ ...user, [e.target.name]: e.target.value})
+        }
+    }
+
 
 
     return (
         <div className='login-container'>
             <div className='login-main'>
-                <form className='login-form' onSubmit={submitHandler}>
+                <form className='login-form' encType="multipart/form-data" onSubmit={submitHandler}>
                     <div className='login-heading'>
                         <h4>REGISTER</h4>
                     </div>
@@ -51,6 +69,10 @@ const Register = () => {
                     <div className='login-div'>
                         <BiLockOpenAlt />
                         <input type='password' placeholder='Password'  required name='password'  value={password} onChange={registerDataChange}/>
+                    </div>
+                    <div id="registerImage">
+                        <img src={avatarPreview} alt='Avatar'/>
+                        <input type='file' name='avatar' accept='image/' onChange={registerDataChange}/>
                     </div>
                     <input type="submit" value="Register" className="loginBtn" />
                     <div className='login-div'>

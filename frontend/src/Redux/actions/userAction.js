@@ -1,9 +1,16 @@
-import {ActionTypes} from "../constants/userConstant";
+import {
+    ActionTypes, 
+    REGISTER_USER_REQUEST, 
+    REGISTER_USER_SUCCESS, 
+    REGISTER_USER_FAIL
+} from "../constants/userConstant";
 import axios from "axios";
 
 export const register = (userData) => async (dispatch) => {
+    try {
+        dispatch({type: REGISTER_USER_REQUEST});
 
-    const config = {data: { "Content-Type": "multipart/form-data" }}
+        const config = {data: { "Content-Type": "multipart/form-data" }}
     const {data} = await axios.post(
         `/api/v1/register`,
         userData,
@@ -11,7 +18,16 @@ export const register = (userData) => async (dispatch) => {
     );
 
     dispatch({
-        type: ActionTypes.REGISTER_USER,
-        payload: data
+        type: REGISTER_USER_SUCCESS,
+        payload: data.user
     })
+
+    } catch (error) {
+        dispatch({
+            type: REGISTER_USER_FAIL,
+            payload:error.response.data.message
+        })
+    }
+
+    
 }
