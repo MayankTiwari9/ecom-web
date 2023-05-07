@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllProducts } from '../../Redux/actions/productAction';
 
-const Accessories = () => {
+const Mobiles = () => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.allProducts.products);
     
@@ -23,7 +23,7 @@ const Accessories = () => {
                 </nav>
             </div>
             {products && products.map((item, index) => {
-                if(item.subCategory === "accessories"){
+                if(item.subCategory === "mobile"){
                     return(
                     <div className='products-main' key={index}>
                 <Link to={`/product/${item._id}`}>
@@ -49,4 +49,4 @@ const Accessories = () => {
     )
 }
 
-export default Accessories;
+export default Mobiles;

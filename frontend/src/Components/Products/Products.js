@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../Redux/actions/productAction";
 import { Link } from "react-router-dom";
 import "./Products.css";
+import Loading from "../Loader/Loading";
 
 
 const Products = () => {
@@ -27,6 +28,8 @@ const Products = () => {
                     <Link to={"/products/accessories"}>Accessories</Link>
                 </nav>
             </div>
+            {loading ? <Loading/> : 
+            <>
             {products && products.map((item, index) => (
                 <div className='products-main' key={index}> 
                             <Link to={`/product/${item._id}`}>
@@ -46,6 +49,8 @@ const Products = () => {
                              </Link>
                          </div>
             ))}
+            </>
+}
         </>
     )
 }

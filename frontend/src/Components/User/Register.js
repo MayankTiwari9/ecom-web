@@ -2,18 +2,14 @@ import React, { useState } from 'react';
 import "./Login.css";
 import { BsEnvelope } from "react-icons/bs";
 import { BiLockOpenAlt } from "react-icons/bi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
-import {useAlert} from "react-alert";
 import { useDispatch } from "react-redux";
 import { register } from '../../Redux/actions/userAction';
 
 const Register = () => {
     const dispatch = useDispatch(); 
 
-    // const navigate = useNavigate();
-
-    // const alert = useAlert(); 
     const [user, setUser] = useState({
         name: "",
         email: "",

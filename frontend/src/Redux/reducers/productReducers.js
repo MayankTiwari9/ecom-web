@@ -8,7 +8,6 @@ import {
   SINGLE_PRODUCT_REQUEST,
   SINGLE_PRODUCT_SUCCESS,
   SINGLE_PRODUCT_FAIL,
-  ActionTypes 
 } from "../constants/productConstants";
 
 
