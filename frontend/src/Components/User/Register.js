@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Login.css";
 import { BsEnvelope } from "react-icons/bs";
 import { BiLockOpenAlt } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
-import { useDispatch } from "react-redux";
-// import profile from "../../images/Profile.png";
-import logo from "../../images/Profile.png";
+import { useDispatch, useSelector } from "react-redux";
 import { register } from '../../Redux/actions/userAction';
+import {useAlert} from "react-alert";
 
 const Register = () => {
     const dispatch = useDispatch(); 
+    const alert = useAlert();
+    const navigate = useNavigate();
+
+    const {loading, isAuthenticated, error} = useSelector((state) => state.user);
 
     const [user, setUser] = useState({
         name: "",
@@ -19,10 +22,6 @@ const Register = () => {
     })
 
     const {name, email, password} = user;
-
-    const [avatar, setAvatar] = useState();
-    const [avatarPreview, setAvatarPreview] = useState({logo});
-
     
     const submitHandler= (e)=>{
         e.preventDefault();
@@ -30,26 +29,23 @@ const Register = () => {
         myForm.set("name", name);
         myForm.set("email", email);
         myForm.set("password", password);
-        myForm.set("avatar", avatar);
         dispatch(register(myForm));
+       
     }
-
+ 
     const registerDataChange = (e) => {
-        if(e.target.name === "avatar"){
-            const reader = new FileReader();
-            reader.onload = () => {
-                if(reader.readyState === 2){
-                    setAvatarPreview(reader.result);
-                    setAvatar(reader.result);
-                }
-            }
-            reader.readAsDataURL(e.target.files[0]);
-        } else {
-            setUser({ ...user, [e.target.name]: e.target.value})
-        }
+        setUser({ ...user, [e.target.name]: e.target.value})
     }
 
 
+    useEffect(() => {
+        if(error){
+            alert.error(error);
+        }
+        if(isAuthenticated){
+            navigate("/account");
+        }
+    }, [alert, error, isAuthenticated, navigate]);
 
     return (
         <div className='login-container'>
@@ -69,11 +65,7 @@ const Register = () => {
                     <div className='login-div'>
                         <BiLockOpenAlt />
                         <input type='password' placeholder='Password'  required name='password'  value={password} onChange={registerDataChange}/>
-                    </div>
-                    <div id="registerImage">
-                        <img src={avatarPreview} alt='Avatar'/>
-                        <input type='file' name='avatar' accept='image/' onChange={registerDataChange}/>
-                    </div>
+                    </div>    
                     <input type="submit" value="Register" className="loginBtn" />
                     <div className='login-div'>
                         <Link to="/login">Already Have an Account ?</Link>
