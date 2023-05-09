@@ -1,63 +1,55 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Login.css";
 import { BsEnvelope } from "react-icons/bs";
 import { BiLockOpenAlt } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import {useAlert} from "react-alert";
+import {useDispatch, useSelector} from "react-redux";
+import {login} from "../../Redux/actions/userAction";
+import Loading from '../Loader/Loading';
 
 const Login = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const alert = useAlert();
+
+    const {error, loading, isAuthenticated} = useSelector((state) => state.user)
 
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
 
-    const emailHandler=(e)=>{
-        setUserEmail(e.target.value);
-    }
 
-    const passwordHandler=(e)=>{
-        setUserPassword(e.target.value); 
-    }
-
-    const submitHandler=(e)=>{
+    const loginSubmit = (e) => {
         e.preventDefault();
-        var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        if(!userEmail.match(validRegex)){
-            alert.error("Please Enter Valid Email Address");
-        }else if(userPassword.length<4){
-            alert.error("Password Should be more than 3 Characters");
-        }else if(userPassword.length>=15){
-            alert.error("Password Cannot excede more than 15 Characters");
-        }else {
-            alert.success("Login Successfull");
-        }
-
-        setUserEmail("");
-        setUserPassword("");
-
-        setTimeout(() =>{
-                navigate("/");
-            }, 2000)
+        dispatch(login(userEmail, userPassword));
     }
     
+    useEffect(() => {
+        if(error){
+            alert.error(error)
+        }
+        if(isAuthenticated){
+            navigate("/");
+        }
+    })
 
     return (
-        <div className='login-container'>
+        <>
+        {loading ? <Loading/> : <><div className='login-container'>
             <div className='login-main'>
-                <form className='login-form' onSubmit={submitHandler}>
+                <form className='login-form' onSubmit={loginSubmit}>
                     <div className='login-heading'>
                         <h4>LOGIN</h4>
                     </div>
                     <div className='login-div'>
                         <BsEnvelope />
-                        <input type='text' placeholder='Email' value={userEmail} onChange={emailHandler}/>
+                        <input type='text' placeholder='Email' required value={userEmail} onChange={(e) => setUserEmail(e.target.value)}/>
                     </div>
                     <div className='login-div'>
                         <BiLockOpenAlt />
-                        <input type='password' placeholder='Password' value={userPassword} onChange={passwordHandler}/>
+                        <input type='password' placeholder='Password' required value={userPassword} onChange={(e) => setUserPassword(e.target.value)}/>
                     </div>
                     <div className='login-div'>
                         <p>Forgot Password ?</p>
@@ -68,7 +60,8 @@ const Login = () => {
                     </div>
                 </form>
             </div>
-        </div>
+        </div></>}
+        </>
     )
 }
 

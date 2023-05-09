@@ -10,12 +10,14 @@ import { Dashboard } from "@material-ui/icons";
 import profile from "../../images/Profile.png"
 import "./UserOptions.css";
 import {useAlert} from "react-alert";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {logout} from "../../Redux/actions/userAction";
 
 
-const UserOptions = () => {
+const UserOptions = ({user}) => {
 
     const alert = useAlert();
+    const dispatch = useDispatch();
     
     const {cartItems} = useSelector((state) => state.cart);
 
@@ -23,13 +25,17 @@ const UserOptions = () => {
     const [open, setOpen] = useState(false);
 
     const options = [
-        { icon: <Dashboard />, name: "Dashboard", func: dashboard },
         { icon: <ListAlt />, name: "Orders", func: orders },
         { icon: <Person />, name: "Profile", func: account },
         { icon: <ShoppingCart style={{color:"tomato"}}/>, name: `Cart(${cartItems.length})`, func: cart},
         { icon: <ExitToApp />, name: "Logout", func: logoutUser },
     ]
 
+    if(user.role === "admin"){
+        options.unshift(
+            { icon: <Dashboard />, name: "Dashboard", func: dashboard }
+        )
+    }
     
     function dashboard(){
         navigate("/admin/dashboard");
@@ -41,7 +47,8 @@ const UserOptions = () => {
         navigate("/account"); 
     }
     function logoutUser(){
-        alert.success("Logout Successfully");
+        alert.success("Logged Out Successfully");
+        dispatch(logout());
     }
     function cart(){
         navigate("/cart");
