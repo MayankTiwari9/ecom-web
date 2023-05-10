@@ -10,6 +10,9 @@
     LOAD_USER_FAIL,
     LOGOUT_USER_SUCCESS,
     LOGOUT_USER_FAIL,
+    ALL_USER_REQUEST,
+    ALL_USER_SUCCESS,
+    ALL_USER_FAIL,
 } from "../constants/userConstant";
 
 export const userReducer = (state = {user:{}}, action) => {
@@ -60,6 +63,31 @@ export const userReducer = (state = {user:{}}, action) => {
                         loading: false,
                         error: action.payload,
                     }
+    
+        default:
+            return state;
+    }
+}
+
+export const allUsersReducer = (state = {users: []}, action) => {
+    switch (action.type) {
+        case ALL_USER_REQUEST:
+            return{
+                ...state,
+                loading: true
+            }
+            case ALL_USER_SUCCESS:
+                return{
+                    ...state,
+                    loading: false,
+                    users: action.payload
+                }
+            case ALL_USER_FAIL:
+                return{
+                    ...state,
+                    loading: false,
+                    error: action.payload
+                }
     
         default:
             return state;

@@ -10,6 +10,9 @@ import {
     LOAD_USER_FAIL,
     LOGOUT_USER_SUCCESS,
     LOGOUT_USER_FAIL,
+    ALL_USER_REQUEST,
+    ALL_USER_SUCCESS,
+    ALL_USER_FAIL,
 } from "../constants/userConstant";
 import axios from "axios";
 
@@ -73,5 +76,22 @@ export const logout = () => async (dispatch) => {
         dispatch({type: LOGOUT_USER_SUCCESS})
     } catch (error) {
         dispatch({type: LOGOUT_USER_FAIL, payload: error.response.data.message})
+    }
+}
+
+// All Users -Admin
+export const allUsers = () => async (dispatch) => {
+    try {
+        dispatch({type: ALL_USER_REQUEST});
+
+        const {data} = await axios.get(`/api/v1/admin/users`);
+
+        dispatch({type: ALL_USER_SUCCESS, payload: data.users});
+
+    } catch (error) {
+        dispatch({
+            type: ALL_USER_FAIL,
+            payload: error.response.data.message
+        })
     }
 }

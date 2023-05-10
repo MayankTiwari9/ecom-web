@@ -4,7 +4,7 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {allProductsReducer, FeaturedProductReducer, selectedProductsReducer} from "./Redux/reducers/productReducers"
 import { allOrderReducer } from "./Redux/reducers/allOrderReducer";
 import {cartReducer} from "./Redux/reducers/cartReducer";
-import { userReducer } from "./Redux/reducers/userReducer";
+import { allUsersReducer, userReducer } from "./Redux/reducers/userReducer";
 
 const reducers = combineReducers({
     featuredProducts: FeaturedProductReducer,
@@ -12,7 +12,8 @@ const reducers = combineReducers({
     product: selectedProductsReducer,
     allOrders: allOrderReducer,
     cart: cartReducer,
-    user: userReducer
+    user: userReducer,
+    allUsers: allUsersReducer,
 });
 
 let initialState = {
