@@ -19,6 +19,7 @@ import { useSelector } from 'react-redux';
 import store from "./store";
 import { useEffect } from 'react';
 import { loadUser } from './Redux/actions/userAction';
+import Dashboard from './Components/UserOptions/Dashboard/Dashboard';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
       <Route exact path='/cart' element={<Cart/>}/>
       <Route excat path="/contact" element={<ContactUs/>}/>
       <Route exact path='/about' element={<AboutUs/>}/>
+      <Route exact path='/admin/dashboard' element={<Dashboard/>} />
     </Routes>
     <Footer/>
     </BrowserRouter>
