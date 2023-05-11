@@ -19,7 +19,12 @@ import { useSelector } from 'react-redux';
 import store from "./store";
 import { useEffect } from 'react';
 import { loadUser } from './Redux/actions/userAction';
-import Dashboard from './Components/UserOptions/Dashboard/Dashboard';
+import Dashboard from './Components/Admin/Dashboard/Dashboard';
+import AllProducts from './Components/Admin/Products/AllProducts';
+import CreateProduct from "./Components/Admin/Products/CreateProduct";
+import AllOrders from "./Components/Admin/Orders/AllOrders";
+import AllUsers from "./Components/Admin/Users/AllUsers";
+import Reviews from "./Components/Admin/Reviews/Reviews";
 
 
 function App() {
@@ -49,6 +54,11 @@ function App() {
       <Route excat path="/contact" element={<ContactUs/>}/>
       <Route exact path='/about' element={<AboutUs/>}/>
       <Route exact path='/admin/dashboard' element={<Dashboard/>} />
+      <Route exact path="/admin/products" element={<AllProducts/>}/>
+      <Route exact path="admin/product" element={<CreateProduct/>}/>
+      <Route exact path="/admin/orders" element={<AllOrders/>}/>
+      <Route exact path="/admin/users" element={<AllUsers/>}/>
+      <Route exact path="/admin/reviews" element={<Reviews/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

@@ -1,0 +1,15 @@
+.admin-product-main{
+    top: 100px;
+    position: relative;
+}
+
+.admin-product-heading{
+    display: flex;
+    justify-content: space-around;
+}
+.admin-product-heading > h2{
+    font-family: cursive;
+    font-size: 2vmax;
+    font-weight: 100;
+    color: rgb(130,130,130);
+}
