@@ -47,3 +47,17 @@
     font-weight: 100;
     font-size: 25px;
 }
+
+.admin-products-table a, 
+.admin-products-table svg{
+    color: rgba(0, 0, 0, 0.527);
+    transition: all 0.5s;
+    font-size: 23px;
+}
+
+.admin-products-table a:hover{
+    color: tomato;
+}
+.admin-products-table button:hover{
+    color: rgb(236, 30, 30);
+}

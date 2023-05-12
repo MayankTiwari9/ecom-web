@@ -9,6 +9,9 @@ import {
   SINGLE_PRODUCT_REQUEST,
   SINGLE_PRODUCT_SUCCESS,
   SINGLE_PRODUCT_FAIL,
+  DELETE_PRODUCT_REQUEST,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAIL,
 } from "../constants/productConstants";
 import axios from "axios";
 
@@ -74,9 +77,28 @@ export const selectedProduct = (id) => async (dispatch) => {
 
 };
 
+export const deleteProduct = (id) => async (dispatch) => {
+  try {
+    dispatch({type: DELETE_PRODUCT_REQUEST});
+
+    const {data} = await axios.delete(`/api/v1/admin/product/${id}`);
+
+    dispatch({
+      type: DELETE_PRODUCT_SUCCESS,
+      payload: data.success,
+    })
+  }  catch (error){
+    dispatch({
+      type: DELETE_PRODUCT_FAIL,
+      payload: error.response.data.message,
+    })
+  }
+}
+
 
 export const removeSelectedProduct = () => {
   return {
     type: ActionTypes.REMOVE_SELECTED_PRODUCT,
   };
 };
+
