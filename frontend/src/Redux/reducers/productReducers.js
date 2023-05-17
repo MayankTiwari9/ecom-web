@@ -8,6 +8,10 @@ import {
   SINGLE_PRODUCT_REQUEST,
   SINGLE_PRODUCT_SUCCESS,
   SINGLE_PRODUCT_FAIL,
+  CREATE_PRODUCT_REQUEST,
+  CREATE_PRODUCT_SUCCESS,
+  CREATE_PRODUCT_RESET,
+  CREATE_PRODUCT_FAIL,
   DELETE_PRODUCT_REQUEST,
   DELETE_PRODUCT_SUCCESS,
   DELETE_PRODUCT_RESET,
@@ -106,6 +110,35 @@ export const productReducer = (state = {}, action) => {
         isDeleted: false,
       }
   
+    default:
+      return state;
+  }
+}
+
+export const newProductReducer = (state = {product: {}}, action) => {
+  switch (action.type){
+    case CREATE_PRODUCT_REQUEST:
+      return{
+        ...state,
+        loading: true,
+      }
+    case CREATE_PRODUCT_SUCCESS:
+      return {
+        loading: false,
+        success: action.payload.success,
+        product: action.payload.product
+      }
+    case CREATE_PRODUCT_FAIL:
+      return{
+        ...state,
+        loading: false,
+        error: action.payload
+      }
+    case CREATE_PRODUCT_RESET:
+      return {
+        ...state,
+        success: true,
+      }
     default:
       return state;
   }

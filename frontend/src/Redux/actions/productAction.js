@@ -5,7 +5,10 @@ import {
   ALL_PRODUCT_FAIL,
   FEATURED_PRODUCT_REQUEST,
   FEATURED_PRODUCT_SUCCESS,
-  FEATURED_PRODUCT_FAIL, 
+  FEATURED_PRODUCT_FAIL,
+  CREATE_PRODUCT_REQUEST,
+  CREATE_PRODUCT_SUCCESS,
+  CREATE_PRODUCT_FAIL, 
   SINGLE_PRODUCT_REQUEST,
   SINGLE_PRODUCT_SUCCESS,
   SINGLE_PRODUCT_FAIL,
@@ -76,6 +79,29 @@ export const selectedProduct = (id) => async (dispatch) => {
   }
 
 };
+
+export const createProduct = (productData) => async (dispatch) => {
+  try {
+    dispatch({type: CREATE_PRODUCT_REQUEST});
+
+    const config = {
+      headers: { "Content-Type": "application/json"},
+    }
+
+    const {data} = await axios.post(`/api/v1/admin/product/new`, productData, config);
+
+    dispatch({
+      type: CREATE_PRODUCT_SUCCESS,
+      payload: data,
+    })
+
+  } catch (error) {
+    dispatch({
+      type: CREATE_PRODUCT_FAIL,
+      payload: error.response.data.message
+    })
+  }
+}
 
 export const deleteProduct = (id) => async (dispatch) => {
   try {
