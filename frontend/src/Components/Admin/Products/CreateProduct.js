@@ -67,11 +67,9 @@ const createProductImageChange = (e) => {
   return (
     <div className='dashboard'>
       <Sidebar/>
-      <div>
-        <form encType='multipart/form-data' onSubmit={createProductSubmitHandler}>
-          <div>
+      <div className="createProduct-main">
             <h1>Create Product</h1>
-          </div>
+        <form encType='multipart/form-data' onSubmit={createProductSubmitHandler} className="createProduct-form">
           <div>
             <h4>Product Name</h4>
             <input type='text' 

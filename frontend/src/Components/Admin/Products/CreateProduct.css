@@ -1,3 +1,43 @@
-.createProduct{
+.createProduct-main{
+    background-color: #f7f7f7;
+    padding: 50px;
+}
+.createProduct-main > h1{
+    margin: auto;
+    justify-content: center;
     display: flex;
+    margin: 10px auto;
+    font-family: cursive;
+    font-size: 26px;
+    font-weight: 600;
+    color: grey;
+}
+.createProduct-form{
+    margin: auto;
+    width: 350px;
+    height: max-content;
+    background: #FFFFFF;
+    padding: 50px;
+}
+.createProduct-form > div{
+    width: 80%;
+    margin: 10px auto;
+    padding: 5px;
+    height: max-content;
+}
+.createProduct-form > div > h4{
+    font-size: 16px;
+    font-weight: 100;
+    margin: 7px auto;
+    font-family: "Roboto";
+}
+.createProduct-form > div > input{
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid gray;
+    border-radius: 25px;
+    padding: 5px;
+    outline: none;
+    font-size: 14px;
+    background: #FFFFFF;
 }
