@@ -41,3 +41,41 @@
     font-size: 14px;
     background: #FFFFFF;
 }
+.createProduct-form > div > textarea{
+    scroll-behavior: auto;
+    outline: none;
+}
+.createProduct-form > div > select{
+    width: 80%;
+    text-align: center;
+    height: 2vmax;
+    font-size: 11px;
+    font-weight: 100;
+    font-family: cursive;
+    outline: none;
+    cursor: pointer;
+}
+.createProduct-form > div > img{
+        margin: 10px;
+    width: 80px;
+}
+.create-btn{
+    margin: auto;
+    width: 60%;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+    height: 2vmax;
+    align-items: center;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    border: 1px solid gray;
+    background: rgb(45,105,235);
+    color: #FFFFFF;
+    transition: all 0.5s;
+}
+.create-btn:hover{
+    background-color: rgb(36, 72, 148);
+}

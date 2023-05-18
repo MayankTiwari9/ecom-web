@@ -5,7 +5,7 @@ import { BiLockOpenAlt } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import {useAlert} from "react-alert";
 import {useDispatch, useSelector} from "react-redux";
-import {login} from "../../Redux/actions/userAction";
+import {login, clearErrors} from "../../Redux/actions/userAction";
 import Loading from '../Loader/Loading';
 
 const Login = () => {
@@ -28,13 +28,14 @@ const Login = () => {
     
     useEffect(() => {
         if(error){
-            alert.error(error)
+            alert.error(error);
+            dispatch(clearErrors());
         }
         if(isAuthenticated){
             navigate("/");
         }
-    })
-
+    },[alert, dispatch, error, isAuthenticated, navigate])
+  
     return (
         <>
         {loading ? <Loading/> : <><div className='login-container'>

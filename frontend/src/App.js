@@ -25,6 +25,7 @@ import CreateProduct from "./Components/Admin/Products/CreateProduct";
 import AllOrders from "./Components/Admin/Orders/AllOrders";
 import AllUsers from "./Components/Admin/Users/AllUsers";
 import Reviews from "./Components/Admin/Reviews/Reviews";
+import Account from "./Components/User/Account";
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
       <Route exact path="/admin/orders" element={<AllOrders/>}/>
       <Route exact path="/admin/users" element={<AllUsers/>}/>
       <Route exact path="/admin/reviews" element={<Reviews/>}/>
+      <Route exact path="/account" element={<Account/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

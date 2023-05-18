@@ -90,7 +90,7 @@ const createProductImageChange = (e) => {
             <h4>Product Description</h4>
             <textarea placeholder='Product Description' 
             cols='30' 
-            rows='1'
+            rows='5'
             value={description}
             onChange={(e) => setDescription(e.target.value)}></textarea>
           </div>
@@ -134,7 +134,7 @@ const createProductImageChange = (e) => {
             ))}
           </div>
           <div>
-            <button>Create</button>
+            <button className="create-btn">Create</button>
           </div>
         </form>
       </div>

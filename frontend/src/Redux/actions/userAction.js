@@ -13,6 +13,7 @@ import {
     ALL_USER_REQUEST,
     ALL_USER_SUCCESS,
     ALL_USER_FAIL,
+    CLEAR_ERRORS,
 } from "../constants/userConstant";
 import axios from "axios";
 
@@ -94,4 +95,8 @@ export const allUsers = () => async (dispatch) => {
             payload: error.response.data.message
         })
     }
+}
+
+export const clearErrors = () => async (dispatch) => {
+    dispatch({type: CLEAR_ERRORS})
 }

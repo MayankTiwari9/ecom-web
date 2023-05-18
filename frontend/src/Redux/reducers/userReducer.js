@@ -13,6 +13,7 @@
     ALL_USER_REQUEST,
     ALL_USER_SUCCESS,
     ALL_USER_FAIL,
+    CLEAR_ERRORS
 } from "../constants/userConstant";
 
 export const userReducer = (state = {user:{}}, action) => {
@@ -62,6 +63,11 @@ export const userReducer = (state = {user:{}}, action) => {
                         ...state,
                         loading: false,
                         error: action.payload,
+                    }
+                case CLEAR_ERRORS:
+                    return {
+                        ...state,
+                        error: null,
                     }
     
         default:
