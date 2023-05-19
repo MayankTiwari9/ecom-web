@@ -1,5 +1,5 @@
 import axios from "axios"
-import {ActionTypes} from "../constants/cartConstant"
+import {ActionTypes, SAVE_SHIPPING_INFO} from "../constants/cartConstant";
 
 export const addItemsToCart = (id , quantity) => async (dispatch,getState) => {
     const {data} = await axios.get(`/api/v1/product/${id}`);
@@ -26,4 +26,13 @@ export const removeItemsFromCart = (id) => async(dispatch, getState) =>{
     );
 
     localStorage.setItem("cartItems", JSON.stringify(getState().cart.cartItems)) 
+}
+
+export const saveShippingInfo = (data) => async (dispatch) => {
+    dispatch({
+        type: SAVE_SHIPPING_INFO,
+        payload: data,
+    });
+
+    localStorage.setItem("shippingInfo", JSON.stringify(data));
 }
