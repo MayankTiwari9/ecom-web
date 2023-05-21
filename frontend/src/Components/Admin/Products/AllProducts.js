@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import "./AllProducts.css";
 import Sidebar from '../Sidebar/Sidebar';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { CiEdit } from "react-icons/ci";
 import { AiOutlineDelete } from "react-icons/ai";
 import {deleteProduct} from "../../../Redux/actions/productAction";
 import { Button } from '@material-ui/core';
-import { DELETE_PRODUCT_RESET } from '../../../Redux/constants/productConstants';
+import { DELETE_PRODUCT_RESET } from '../../../Redux/constants/productConstants'; 
 
 
 const AllProducts = () => {
@@ -61,6 +61,13 @@ products && products.forEach((item) => {
     category: item.category,
     stock: item.stock,
   })
+});
+
+let outOfStock = 0;
+products && products.forEach((item) => {
+  if(item.stock === 0){
+    outOfStock++;
+  }
 })
 
   return (
@@ -78,15 +85,15 @@ products && products.forEach((item) => {
           </div>
           <div>
             <p>Out Of Stock</p>
-            <h1>3</h1> 
+            <h1>{outOfStock}</h1> 
           </div>
           <div>
             <p>Categories</p>
-            <h1>4</h1>
+            <h1>2</h1>
           </div>
           <div>
             <p>Sub Categories</p>
-            <h1>5</h1>
+            <h1>4</h1>
           </div>
         </div>}
         

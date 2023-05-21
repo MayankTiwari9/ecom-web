@@ -3,16 +3,20 @@ import {saveShippingInfo} from "../../../Redux/actions/cartAction";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {Country, State} from "country-state-city";
+import { Link } from 'react-router-dom';
 import "./OrderSummary.css";
+import {useAlert} from "react-alert";
 
 
 const OrderSummary = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const alert = useAlert();
 
-  const {shippingInfo} = useSelector((state) => state.cart);
+  const {shippingInfo, cartItems} = useSelector((state) => state.cart);
   
+
   
   const [address, setAddress] = useState(shippingInfo.address);
   const [city, setCity] = useState(shippingInfo.city);
@@ -21,7 +25,19 @@ const OrderSummary = () => {
   const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
   const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
 
-  const shippingSubmit = (e) => {
+
+const subtotal = cartItems.reduce(
+    (acc,item) => acc + item.quantity * item.price, 0
+)
+
+const shippingCharges = subtotal > 1000 ? 0 : 200;
+
+const tax = subtotal * 0.18;
+
+const totalPrice = subtotal + tax + shippingCharges;
+
+
+const proceedToPayment = (e) =>{
     e.preventDefault();
     
     if(phoneNo.length < 10 || phoneNo.length > 10){
@@ -31,8 +47,21 @@ const OrderSummary = () => {
     dispatch(
         saveShippingInfo({address, city,state,country, pinCode, phoneNo})
     )
-    navigate("/order/confirm");
 
+    const data = {
+        subtotal,
+        shippingCharges,
+        tax,
+        totalPrice,
+    };
+    sessionStorage.setItem("orderInfo", JSON.stringify(data));
+    alert.success("Order Placed Successfully");
+    setTimeout(() => {
+
+        navigate("/");
+    }, 3000);
+    
+    clearTimeout();
 }
   
   return (
@@ -43,8 +72,7 @@ const OrderSummary = () => {
                   <div>
 
                     <h2 className='shippingHeading'>Shipping Details</h2>
-                    <form className='shippingForm' encType='multipart/form-data' onSubmit={shippingSubmit} 
-                    >
+                    <form className='shippingForm' encType='multipart/form-data' >
                         <div>
                             <input type="text" placeholder='Address' required value={address} onChange={(e) => setAddress(e.target.value)} />
                         </div>
@@ -83,15 +111,49 @@ const OrderSummary = () => {
                                 </select>
                             </div>
                         )}
-                        <input type="submit" value="Continue" className='shippingBtn' disabled={state ? false : true} />
+                        {/* <input type="submit" value="Continue" className='shippingBtn' disabled={state ? false : true} /> */}
                     </form>
                         </div>
-                        <div>
-                          Cart Items
+                    <div className='confirmCartItems'>
+                        <h2 className='shippingHeading'>Your Cart Items:</h2>
+                        <div className='confirmCartItemsContainer'>
+                            {cartItems && cartItems.map((item) => (
+                                <div key={item.id}>
+                                    <img src={item.images} alt="Product" />
+                                    <Link to={`/product/${item.id}`}>{item.name}</Link>
+                                    <span>
+                                        {item.quantity} X ₹{item.price} =
+                                        <b>₹{item.price * item.quantity}</b> 
+                                    </span>
+                                </div>
+                            ))}
                         </div>
-                </div>
-                <div>
-                  Payment Summary
+                    </div>
+                </div><div>
+                    <div className="orderSummary">
+                        <h2 className='paymentSummaryHeading'>Payment Summary</h2>
+                        <div>
+                            <div>
+                                <p>Subtotal:</p>
+                                <span>₹{subtotal}</span>
+                            </div>
+                            <div>
+                                <p>Shipping Charges:</p>
+                                <span>₹{shippingCharges}</span>
+                            </div>
+                            <div>
+                                <p>GST:</p>
+                                <span>₹{tax}</span>
+                            </div>
+                        </div>
+                        <div className='orderSummaryTotal'>
+                            <p>
+                                <b>Total:</b>
+                            </p>
+                            <span>₹{totalPrice}</span>
+                        </div>
+                        <button onClick={proceedToPayment}>Proceed To Payment</button>
+                    </div>
                 </div>
             </div>
             </div>

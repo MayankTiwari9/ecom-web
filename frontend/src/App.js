@@ -27,6 +27,7 @@ import AllUsers from "./Components/Admin/Users/AllUsers";
 import Reviews from "./Components/Admin/Reviews/Reviews";
 import Account from "./Components/User/Account";
 import OrderSummary from './Components/UserOptions/Cart/OrderSummary';
+import Orders from './Components/User/Orders';
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
       <Route exact path="/admin/reviews" element={<Reviews/>}/>
       <Route exact path="/account" element={<Account/>}/>
       <Route exact path='/ordersummary' element={<OrderSummary/>}/> 
+      <Route exact path="/orders" element={<Orders/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>

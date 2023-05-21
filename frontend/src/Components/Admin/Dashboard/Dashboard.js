@@ -6,6 +6,7 @@ import { BsTruck, BsCheckCircle, BsCart4 } from "react-icons/bs";
 import {useDispatch, useSelector} from "react-redux";
 import {getAllProducts} from "../../../Redux/actions/productAction";
 import {allUsers} from "../../../Redux/actions/userAction";
+import {useNavigate} from "react-router-dom";
 
 
 const Dashboard = () => {
@@ -13,13 +14,18 @@ const Dashboard = () => {
 
   const {products} = useSelector((state) => state.allProducts);
   const {users} = useSelector((state) => state.allUsers);
+  const navigate = useNavigate();
   
 
 
   useEffect(() => {
     dispatch(getAllProducts());
     dispatch(allUsers());
-  },[dispatch])
+  },[dispatch]);
+
+  const allProductsHandler = () => {
+    navigate("/admin/products"); 
+  }
 
   return (
     <div className="dashboard">
@@ -28,7 +34,7 @@ const Dashboard = () => {
         <div className='details-div order-complete'>
           <div>
             <p>Orders Completed</p>
-            <h3>2</h3>
+            <h3>10</h3>
             <button>View All</button>
           </div>
           <div>
@@ -39,7 +45,7 @@ const Dashboard = () => {
         <div className='details-div order-processing'>
           <div>
             <p>Orders Processing</p>
-            <h3>2</h3>
+            <h3>7</h3>
             <button>View All</button>
           </div>
           <div>
@@ -73,7 +79,7 @@ const Dashboard = () => {
           <div>
             <p>All Products</p>
             <h3>{products.length}</h3>
-            <button>View All</button>
+            <button onClick={allProductsHandler}>View All</button>
           </div>
           <div>
             <BsCart4/>

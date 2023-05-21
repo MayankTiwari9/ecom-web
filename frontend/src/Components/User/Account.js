@@ -12,7 +12,7 @@ const Account = () => {
         {user && (
             <div>
 
-                <h1>My Account</h1>
+                <h1 className='account-heading'>My Account</h1>
                 <div className='account-main'>
                     <div className='account-image'>
                         <img src={profile} alt='avatar' />
