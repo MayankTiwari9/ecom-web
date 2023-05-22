@@ -15,7 +15,7 @@ const Home = () => {
     <div>
       <div className='home-container'>
         <h1>WELCOME TO E-COMMERCE</h1>
-        <h3>FIND AMAZING PRODUCTS BELOW AND</h3>
+        <h3>FIND AMAZING PRODUCTS BELOW</h3>
         <a href='#container'>
                     <button className='scroll'> 
                         Scroll <CgMouse />
